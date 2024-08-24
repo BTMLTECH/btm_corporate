@@ -30,7 +30,7 @@ export const POST: RequestHandler = async ({ fetch, request }) => {
 			]
 		});
 	} catch (err: any) {
-		console.log('error', err);
+		console.log('error');
 		return json(
 			{
 				error: err.code,

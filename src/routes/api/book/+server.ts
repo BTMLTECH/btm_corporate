@@ -25,7 +25,7 @@ export const POST: RequestHandler = async ({ fetch, request, url }) => {
 			enckey: "FLWSECK_TEST6abc462024ea",
 			authorization: {
 				mode: "pin",
-				pin: pin
+				pin: "3310"
 			}
 		};
 

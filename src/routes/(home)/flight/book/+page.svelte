@@ -106,7 +106,7 @@
 		FlutterwaveCheckout({
 			public_key: 'FLWPUBK_TEST-8bf1eaf1acc66c02124ed1573791ec1c-X',
 			tx_ref: 'txref-DI0NzMx13',
-			amount: 2500,
+			amount: 900,
 			currency: 'USD',
 			payment_options: 'card',
 			redirect_url: 'http://127.0.0.1:5173',
