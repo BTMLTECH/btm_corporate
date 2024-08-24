@@ -71,7 +71,7 @@
 	};
 
 	const checkFlightPriceAndProceed = async (
-		flightData: FlightsOfferSearchType  & { dictionaries?: { carriers: { [x: string]: string } } },
+		flightData: FlightsOfferSearchType & { dictionaries?: { carriers: { [x: string]: string } } },
 		idx: string = ''
 	) => {
 		booking.id = idx as string;
@@ -87,14 +87,16 @@
 
 			const response = await request.json();
 
-			booking.id = '';
-			booking.isLoading = false;
-			let carrier = flightData.itineraries[0].segments[0].operating.carrierCode 
+			let carrier = flightData.itineraries[0].segments[0].operating.carrierCode;
 
 			if (!response.warnings) {
-				flightStore.set({...flightData, dictionaries: flightData.dictionaries})
+				flightStore.set({ ...flightData, dictionaries: flightData.dictionaries });
 				goto('book');
+				return;
 			}
+
+			booking.id = '';
+			booking.isLoading = false;
 			return response;
 		} catch (err: any) {
 			console.log('an error has occured', err);
@@ -225,7 +227,10 @@
 											type="submit"
 											disabled={booking.isLoading}
 											on:click={(e) => {
-												checkFlightPriceAndProceed({...flight, dictionaries: data.results?.dictionaries}, e.currentTarget.id);
+												checkFlightPriceAndProceed(
+													{ ...flight, dictionaries: data.results?.dictionaries },
+													e.currentTarget.id
+												);
 											}}
 											class="{booking.isLoading
 												? 'opacity-50 items-center'

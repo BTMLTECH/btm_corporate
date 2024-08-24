@@ -32,6 +32,8 @@ export const POST: RequestHandler = async ({ fetch, request, url }) => {
 		});
 	} catch (err) {
 		console.log("An error has occured", err)
-		return json([]);
+		return json({
+			result:  {}
+		});
 	}
 };

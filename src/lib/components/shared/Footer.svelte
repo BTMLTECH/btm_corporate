@@ -1,4 +1,4 @@
-<footer class="bg-white">
+<footer class="bg-white border-t pt-10">
     <div class="w-[calc(100%_-_2.5rem)] lg:w-[calc(100%_-_4rem)] mx-auto max-w-7xl">
         <div class="py-12 lg:py-20 grid grid-cols-12 gap-5 lg:gap-8">
             <div class="col-span-12 xl:col-span-8">

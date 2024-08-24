@@ -17,12 +17,16 @@ function persist(
 	let storedValue:
 		| (FlightsOfferSearchType & { dictionaries?: { carriers: { [x: string]: string } } })
 		| undefined;
+
 	if (typeof window !== 'undefined') {
 		// Check if the key exists in localStorage
 		storedValue = JSON.parse(localStorage.getItem(key) as string) as FlightsOfferSearchType & {
 			dictionaries?: { carriers: { [x: string]: string } };
 		}
+
+		console.log("stored value", storedValue)
 	}
+	
 	const data = storedValue ? storedValue : initialValue;
 
 	// Create a writable store with the initial data
