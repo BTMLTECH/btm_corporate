@@ -13,7 +13,7 @@
 
 <Header />
 
-<div class="{currentLocation === "/flight/search" ? "" : "min-h-screen"} relative mt-[98px] md:mt-[115px]">
+<div class="{currentLocation === "/flight/search"  || currentLocation === "/flight/book/done" ? "" : "min-h-screen"} relative mt-[98px] md:mt-[115px]">
 	<slot />
 </div>
 <a

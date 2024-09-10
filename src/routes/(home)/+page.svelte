@@ -6,7 +6,7 @@
 	import JumboImage from '$lib/images/jumbo-image.webp';
 	import CallOut from './components/CallOut.svelte';
 	import Loading from './components/Loading.svelte';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { flightSearchSchema } from '$lib/validation';
 	import { superForm } from 'sveltekit-superforms';
 	import { zod } from 'sveltekit-superforms/adapters';
@@ -41,10 +41,22 @@
 
 	let autocompleteTimeoutHandle = 0;
 	let originResults:
-		| [{ name: string; address: { cityName: string; countryCode: string }; iataCode: string }]
+		| [
+				{
+					name: string;
+					address: { cityName: string; countryCode: string };
+					iataCode: string;
+				}
+		  ]
 		| [] = [];
 	let destinationResults:
-		| [{ name: string; address: { cityName: string; countryCode: string }; iataCode: string }]
+		| [
+				{
+					name: string;
+					address: { cityName: string; countryCode: string };
+					iataCode: string;
+				}
+		  ]
 		| [] = [];
 	let isOriginLoading: boolean = false;
 	let isDestinationLoading: boolean = false;
@@ -85,7 +97,10 @@
 							{
 								subType: string;
 								name: string;
-								address: { cityName: string; countryCode: string };
+								address: {
+									cityName: string;
+									countryCode: string;
+								};
 								iataCode: string;
 							}
 						];
@@ -114,7 +129,14 @@
 					const { error, data } = (await response.json()) as {
 						error?: string;
 						data: [
-							{ name: string; address: { cityName: string; countryCode: string }; iataCode: string }
+							{
+								name: string;
+								address: {
+									cityName: string;
+									countryCode: string;
+								};
+								iataCode: string;
+							}
 						];
 					};
 
@@ -140,6 +162,7 @@
 
 	function handleClickOutside(event: MouseEvent): void {
 		const target = event.target as HTMLElement;
+
 		if (!target.closest('.origin-location')) {
 			showOriginLocations = false;
 		}
@@ -147,6 +170,8 @@
 		if (!target.closest('.destination-location')) {
 			showDestinationLocations = false;
 		}
+
+		if (!target.closest('.flight-options')) displayFlightPassengers = false;
 	}
 
 	type FlightSearchType = {
@@ -206,11 +231,10 @@
 		window.document.addEventListener('click', handleClickOutside);
 	});
 
-	// onDestroy(() => {
-	// 	window.document.removeEventListener('click', handleClickOutside);
-	// });
-
-	$: console.log('datatatata', originResults, destinationResults);
+	onDestroy(() => {
+		if (typeof window !== 'undefined')
+			window.document.removeEventListener('click', handleClickOutside);
+	});
 </script>
 
 <div>
@@ -259,11 +283,9 @@
 						Hotels
 					</button>
 
-					<button
-						type="button"
-						on:click={() => {
-							activeFlightSearchTab = 'tourPackages';
-						}}
+					<a
+						href="/tour-packages"
+						target="_blank"
 						class="{activeFlightSearchTab === 'tourPackages'
 							? 'border-b-4 border-blue-600 text-blue-600'
 							: 'border-gray-500 text-gray-500'} tour-packages hover:border-b-4 hover:bg-neutral-100 hover:rounded-t-lg flex gap-x-2 p-3 !pb-1 text-md font-bold transition-all ease-linear"
@@ -277,7 +299,7 @@
 							/>
 						</svg>
 						Tour Packages
-					</button>
+					</a>
 				</div>
 
 				<!-- Flight -->
@@ -309,7 +331,7 @@
 								</button>
 							</div>
 
-							<div class="flex">
+							<div class="flex flight-class">
 								<!-- Flight Class Dropdown -->
 								<div class="flex relative">
 									<div class="p-2 font-semibold text-md">
@@ -450,7 +472,7 @@
 								</div>
 
 								<!-- Flight Options -->
-								<div class="inline-flex items-center relative">
+								<div class="inline-flex items-center relative flight-options">
 									<button
 										type="button"
 										on:click={() => {
@@ -478,7 +500,9 @@
 													d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4c-.47 0-.91.1-1.33.24a5.98 5.98 0 0 1 0 7.52c.42.14.86.24 1.33.24m-6 1c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4"
 												/>
 											</svg>
-											<span class="flex items-center gap-x-1 font-bold"> </span>
+											<span class="flex items-center gap-x-1 font-bold">
+												{$form.adult + $form.child + $form.infant}
+											</span>
 										</p>
 
 										<span class="mx-2">
@@ -541,15 +565,22 @@
 														<div class="flex items-center gap-x-2 w-full justify-between">
 															<button
 																on:click={() => {
-																	// $form.
+																	if ($form.adult === 0) {
+																		$form.adult = 0;
+																		return;
+																	}
+																	$form.adult -= 1;
 																}}
 																type="button"
 																class="flex-1 hover:bg-neutral-200 rounded-md font-bold border"
 															>
 																-
 															</button>
-															<span></span>
+															<span>{$form.adult}</span>
 															<button
+																on:click={() => {
+																	$form.adult += 1;
+																}}
 																type="button"
 																class="flex-1 hover:bg-neutral-200 rounded-md font-bold border"
 															>
@@ -581,13 +612,20 @@
 													<div class="w-full">
 														<div class="flex items-center gap-x-2 w-full justify-between">
 															<button
+																on:click={() => {
+																	if ($form.child === 0) $form.child = 0;
+																	else $form.child -= 1;
+																}}
 																type="button"
 																class="flex-1 hover:bg-neutral-200 rounded-md font-bold border"
 															>
 																-
 															</button>
-															<span></span>
+															<span>{$form.child}</span>
 															<button
+																on:click={() => {
+																	$form.child += 1;
+																}}
 																type="button"
 																class="flex-1 hover:bg-neutral-200 rounded-md font-bold border"
 															>
@@ -619,13 +657,20 @@
 													<div class="w-full">
 														<div class="flex items-center gap-x-2 w-full justify-between">
 															<button
+																on:click={() => {
+																	if ($form.infant === 0) $form.infant = 0;
+																	else $form.infant -= 1;
+																}}
 																type="button"
 																class="flex-1 hover:bg-neutral-200 rounded-md font-bold border"
 															>
 																-
 															</button>
-															<span></span>
+															<span>{$form.infant}</span>
 															<button
+																on:click={() => {
+																	$form.infant += 1;
+																}}
 																type="button"
 																class="flex-1 hover:bg-neutral-200 rounded-md font-bold border"
 															>
@@ -668,7 +713,9 @@
 										<input
 											on:input={(e) => {
 												isOriginLoading = true;
-												autocomplete({ origin: e.currentTarget.value });
+												autocomplete({
+													origin: e.currentTarget.value
+												});
 											}}
 											on:focus={() => {
 												showDestinationLocations = false;
@@ -678,7 +725,7 @@
 											name="origin"
 											id="origin"
 											bind:value={$form.origin}
-											class="outline-none peer block w-full border-0 bg-gray-50 py-1.5 px-1.5 text-gray-900 focus:ring-0 sm:text-sm sm:leading-6 border-b"
+											class="outline-none peer block w-full border-0 bg-neutral-100 py-1.5 px-1.5 text-gray-900 focus:ring-0 sm:text-sm sm:leading-6 border-b"
 											placeholder="From?"
 										/>
 
@@ -712,7 +759,9 @@
 															</p>
 														</div>
 														<div class="border px-1 font-semibold rounded">
-															<p>{origin.iataCode}</p>
+															<p>
+																{origin.iataCode}
+															</p>
 														</div>
 													</li>
 												{/each}
@@ -733,7 +782,9 @@
 										<input
 											on:input={(e) => {
 												isDestinationLoading = true;
-												autocomplete({ destination: e.currentTarget.value });
+												autocomplete({
+													destination: e.currentTarget.value
+												});
 											}}
 											on:focus={() => {
 												showOriginLocations = false;
@@ -743,7 +794,7 @@
 											name="destination"
 											id="destination"
 											bind:value={$form.destination}
-											class="outline-none peer block w-full border-0 bg-gray-50 py-1.5 px-1.5 text-gray-900 focus:ring-0 sm:text-sm sm:leading-6 border-b"
+											class="outline-none peer block w-full border-0 bg-neutral-100 py-1.5 px-1.5 text-gray-900 focus:ring-0 sm:text-sm sm:leading-6 border-b"
 											placeholder="To?"
 										/>
 										{#if isDestinationLoading}
@@ -768,7 +819,9 @@
 														class="text-sm px-2 py-3 hover:bg-neutral-100 cursor-pointer flex items-start justify-between gap-4"
 													>
 														<div class="grid">
-															<small class="text-xs font-semibold">{destination.name} Airport</small
+															<small class="text-xs font-semibold"
+																>{destination.name}
+																Airport</small
 															>
 															<p
 																class="text-xs font-semibold px-1 rounded-full bg-neutral-300 w-fit"
@@ -777,7 +830,9 @@
 															</p>
 														</div>
 														<div class="border px-1 font-semibold rounded">
-															<p>{destination.iataCode}</p>
+															<p>
+																{destination.iataCode}
+															</p>
 														</div>
 													</li>
 												{/each}
@@ -809,7 +864,7 @@
 										name="departure"
 										id="departure"
 										bind:value={$form.departure}
-										class="outline-none peer block w-full border-0 bg-gray-50 py-1.5 px-1.5 text-gray-900 focus:ring-0 sm:text-sm sm:leading-6"
+										class="outline-none peer block w-full border-0 bg-neutral-100 py-1.5 px-1.5 text-gray-900 focus:ring-0 sm:text-sm sm:leading-6"
 										placeholder="Jane Smith"
 									/>
 									<div
@@ -829,7 +884,7 @@
 											name="return"
 											id="return"
 											bind:value={$form.return}
-											class="outline-none peer block w-full border-0 bg-gray-50 py-1.5 px-1.5 text-gray-900 focus:ring-0 sm:text-sm sm:leading-6"
+											class="outline-none peer block w-full border-0 bg-neutral-100 py-1.5 px-1.5 text-gray-900 focus:ring-0 sm:text-sm sm:leading-6"
 											placeholder="Jane Smith"
 										/>
 										<div
@@ -841,6 +896,38 @@
 							{/if}
 						</div>
 
+						<div class="block">
+							<button type="submit" class="btn-primary float-right">Search</button>
+						</div>
+					</form>
+				{:else if activeFlightSearchTab === 'hotels'}
+					<form method="post" on:submit|preventDefault={() => alert('Hotels')} class="grid gap-y-2">
+						<input
+							type="text"
+							name="return"
+							id="return"
+							bind:value={$form.return}
+							class="outline-none peer block w-full border-0 bg-neutral-100 p-4 text-gray-900 focus:ring-0 sm:text-sm sm:leading-6"
+							placeholder="Search for hotels..."
+						/>
+						<div class="block">
+							<button type="submit" class="btn-primary float-right">Search</button>
+						</div>
+					</form>
+				{:else if activeFlightSearchTab === 'tourPackages'}
+					<form
+						method="post"
+						on:submit|preventDefault={() => alert('Tour packages')}
+						class="grid gap-y-2"
+					>
+						<input
+							type="text"
+							name="return"
+							id="return"
+							bind:value={$form.return}
+							class="outline-none peer block w-full border-0 bg-neutral-100 p-4 text-gray-900 focus:ring-0 sm:text-sm sm:leading-6"
+							placeholder="Search for tour packages..."
+						/>
 						<div class="block">
 							<button type="submit" class="btn-primary float-right">Search</button>
 						</div>

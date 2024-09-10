@@ -10,29 +10,61 @@ export const serviceStore = writable({
 function persist(
 	key: string,
 	initialValue:
-		| (FlightsOfferSearchType & { dictionaries?: { carriers: { [x: string]: string } } })
-		| undefined
+		(FlightsOfferSearchType & { dictionaries?: { carriers: { [x: string]: string } } }) | null
 ) {
-	// Get the initial value from localStorage or use the provided initial value
+	// // Get the initial value from localStorage or use the provided initial value
+	// let storedValue:
+	// 	(FlightsOfferSearchType & { dictionaries?: { carriers: { [x: string]: string } } }) | null = null
+
+	// if (typeof window !== 'undefined') {
+	// 	// Check if the key exists in localStorage
+	// 	if (!localStorage.getItem(key) || localStorage.getItem(key) === null) {
+	// 		console.log("init", localStorage.getItem(key))
+	// 		storedValue = JSON.parse(localStorage.getItem(key) as string) as FlightsOfferSearchType & {
+	// 			dictionaries?: { carriers: { [x: string]: string } };
+	// 		}
+	// 	}
+	// 	else
+	// 		storedValue = null
+
+	// 	console.log("stored value", storedValue)
+	// }
+
+	// const data = storedValue ? storedValue : initialValue;
+
+	// // Create a writable store with the initial data
+	// const store = writable(data);
+
+	// // Subscribe to the store and save any changes to localStorage
+	// if (typeof window !== 'undefined' && data === null) {
+	// 	store.subscribe((value) => {
+	// 		localStorage.setItem(key, JSON.stringify(value));
+	// 	});
+	// }
+
+	// return store;
+
 	let storedValue:
-		| (FlightsOfferSearchType & { dictionaries?: { carriers: { [x: string]: string } } })
-		| undefined;
+		(FlightsOfferSearchType & { dictionaries?: { carriers: { [x: string]: string } } }) | null = null;
 
 	if (typeof window !== 'undefined') {
-		// Check if the key exists in localStorage
-		storedValue = JSON.parse(localStorage.getItem(key) as string) as FlightsOfferSearchType & {
-			dictionaries?: { carriers: { [x: string]: string } };
-		}
+		// Check if the key exists and is not null
+		const storedData = localStorage.getItem(key);
 
-		console.log("stored value", storedValue)
+		if (storedData !== null) {
+			storedValue = JSON.parse(storedData) as FlightsOfferSearchType & {
+				dictionaries?: { carriers: { [x: string]: string } };
+			};
+		}
 	}
-	
-	const data = storedValue ? storedValue : initialValue;
+
+	// Use stored value if available, otherwise use the initial value
+	const data = storedValue !== null ? storedValue : initialValue;
 
 	// Create a writable store with the initial data
 	const store = writable(data);
 
-	// Subscribe to the store and save any changes to localStorage
+	// Always subscribe and store the changes in localStorage
 	if (typeof window !== 'undefined') {
 		store.subscribe((value) => {
 			localStorage.setItem(key, JSON.stringify(value));
@@ -43,4 +75,4 @@ function persist(
 }
 
 // Store flight information
-export const flightStore = persist('flightData', undefined);
+export const flightStore = persist('flightData', null);

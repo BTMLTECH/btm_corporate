@@ -1,7 +1,4 @@
 import type { FlightsOfferSearchType } from '$lib/utils/flightTypes.js';
-import type { Actions } from '../../$types.js';
-import { amadeus } from '$lib/server/amadeus';
-import { json } from '@sveltejs/kit';
 
 export async function load({ fetch, url }) {
 	const form = new FormData();

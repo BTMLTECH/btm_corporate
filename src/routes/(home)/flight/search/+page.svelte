@@ -2,7 +2,7 @@
 	import { enhance } from '$app/forms';
 	import type { FlightsOfferSearchType } from '$lib/utils/flightTypes';
 	import Clock from './components/Clock.svelte';
-	import Date from './components/Date.svelte';
+	import Date from './components/DateIcon.svelte';
 	import EditIcon from './components/EditIcon.svelte';
 	import FlightIcon from './components/FlightIcon.svelte';
 	import OutboundFlight from './components/OutboundFlight.svelte';
@@ -15,6 +15,7 @@
 	import { page } from '$app/stores';
 	import Airline from './components/Airline.svelte';
 	import Plane from './components/Plane.svelte';
+	import Home from '../book/components/Home.svelte';
 
 	let booking: {
 		id: string;
@@ -103,10 +104,43 @@
 			return null;
 		}
 	};
+
+	$: console.log('data', data);
 </script>
 
-<!-- Edit search -->
-{#if data.results}
+{#if data.results && data.results.data && !data.results.data.length}
+	<div class="w-full pt-40 pb-20">
+		<div class="grid items-center justify-center place-items-center gap-3">
+			<NoFlight class="w-20 h-20 text-neutral-500" />
+			<p class="text-xl font-semibold text-neutral-700">
+				No flight(s) to this destination at the moment
+			</p>
+			<a
+				href="/"
+				class="flex items-center gap-x-1 bg-neutral-600 rounded-md text-white font-semibold px-3 py-2 transition-all hover:scale-110 ease-in"
+			>
+				<Home />
+				Go back home</a
+			>
+		</div>
+	</div>
+{:else if data.results && !data.results.data}
+	<div class="w-full pt-40 pb-20">
+		<div class="grid items-center justify-center place-items-center gap-3">
+			<NoFlight class="w-20 h-20 text-neutral-500" />
+			<p class="text-xl font-semibold text-neutral-700">
+				An unknown error has occured
+			</p>
+			<a
+				href="/"
+				class="flex items-center gap-x-1 bg-neutral-600 rounded-md text-white font-semibold px-3 py-2 transition-all hover:scale-110 ease-in"
+			>
+				<Home />
+				Go back home</a
+			>
+		</div>
+	</div>
+{:else if data.results}
 	<section class="w-full">
 		<div class="bg-neutral-100">
 			<div class="px-10 py-8">
