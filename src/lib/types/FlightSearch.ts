@@ -1,0 +1,82 @@
+export interface IFlightSearch {
+  baseAmount: number;
+  currency: string;
+  farePrice: {
+    appliedRules: Array<any>;
+    currencyData: Array<{
+      convertedBase: number;
+      convertedFormattedTotal: string;
+      convertedTotal: string;
+      currency: {
+        createdDate: string;
+        currencyCode: string;
+        currencyName: string;
+        exchangeRateInNaira: number;
+        id: string;
+        status: string;
+        symbol: string;
+        updatedDate: string;
+      };
+      fairRuleAddedPrice: Array<any>;
+    }>;
+    fareBase: number;
+    fareTotal: number;
+  };
+  flightType: string;
+  formatedTotalAmount: string;
+  otherSegments: Array<any>;
+  segments: Array<{
+    arrivalDate: string;
+    arrivalLocation: string;
+    arrivalTerminal: string;
+    arrivalTime: string;
+    bookingClass: string;
+    cabin: string;
+    cabinCode: string;
+    departureDate: string;
+    departureLocation: string;
+    departureTerminal: string;
+    departureTime: string;
+    duration: string;
+    durationSeconds: string;
+    fareType: Array<string>;
+    flightNumber: string;
+    flights: Array<{
+      arrivalAirportName: string;
+      arrivalCountryCode: string;
+      arrivalDate: string;
+      arrivalDateTime: string;
+      arrivalLocation: string;
+      arrivalTerminal: string;
+      arrivalTime: string;
+      bookingClass: string;
+      cabin: string;
+      cabinCode: string;
+      carrierIcon: string;
+      carrierName: string;
+      departureAirportName: string;
+      departureCountryCode: string;
+      departureDate: string;
+      departureDateTime: string;
+      departureLocation: string;
+      departureTerminal: string;
+      departureTime: string;
+      duration: string;
+      equipment: string;
+      fareBasis: string;
+      fareType: Array<string>;
+      flightNumber: string;
+      marketingCarrier: string;
+      numberOfStops: number;
+      weightType: string;
+      weightUnit: number;
+    }>;
+    marketingCarrier: string;
+    numberOfStops: number;
+    weightType: string;
+    weightUnit: number;
+  }>;
+  supplier: string;
+  taxAmount: string;
+  totalAmount: number;
+}
