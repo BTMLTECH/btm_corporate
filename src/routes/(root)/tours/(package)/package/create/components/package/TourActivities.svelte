@@ -12,7 +12,7 @@
   export let errors: SuperFormErrors<typeof PackageSchema._type>;
   export let form: SuperFormData<typeof PackageSchema._type>;
   export let activities: Activity[];
-  export let disabled: boolean | undefined = false;
+  export const disabled: boolean | undefined = false;
 
   let selectedActivities = new Set()
 </script>

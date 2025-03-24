@@ -31,7 +31,7 @@
   export let form: SuperFormData<typeof PackageSchema._type>;
   export let regions: Regions[];
   export let accommodations: Accommodation[];
-  export let activities: Activities[];
+  // export let activities: Activities[];
   export let touristSites: TouristSite[];
   export let transportations: Transportation[];
   export let disabled: boolean | undefined = false;
