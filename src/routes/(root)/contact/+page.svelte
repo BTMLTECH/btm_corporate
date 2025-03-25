@@ -83,7 +83,8 @@
                 Email: <a href="mailto:info.gh@btmlimited.net" class="hover:text-gray-900 text-blue-500">info.gh@btmlimited.net</a>
               </p>
               <p class="mt-1 text-gray-600">
-                Phone: <a href="tel:+233302743234" class="hover:text-gray-900 text-blue-500">+233(0)-302-743-234, +233(0)-303-980-144</a>
+                Phone: <a href="tel:+233302743234" class="hover:text-gray-900 text-blue-500">+233(0)-302-743-234</a>,
+                <a href="tel:+233303980144" class="hover:text-gray-900 text-blue-500">+233(0)-303-980-144</a>
               </p>
               <p class="mt-1 text-gray-600">
                 WhatsApp: <a href="tel:+233302743234" class="hover:text-gray-900 text-blue-500">+233(0)-598-117-590</a>
