@@ -6,8 +6,9 @@
       </p>
     </div>
 
-    <div class="mt-12">
-        
+    <div class="main-container flex justify-center items-center mt-24">
+
+      <p class="font-semibold">Nothing to show</p>
     </div>
     
   </div>
