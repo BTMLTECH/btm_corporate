@@ -136,7 +136,7 @@
 </script>
 
 <div class="relative w-4/5 lg:w-3/4 mx-auto">
-  {#if showPayment}
+  {#if !showPayment}
     <!-- <PackageNav {form} {previewPackage} /> -->
     <div class="mx-auto pt-10 md:pt-8 w-full sm:w-5/6 md:w-4/5 lg:w-3/4">
       <form
@@ -207,6 +207,7 @@
           >
 
           <div class="space-y-2">
+            <input type="hidden" value={data.form.data.id} name="tour_package_id">
             <div class="md:flex justify-between gap-x-6 w-full">
               <label
                 for="cardNumber"

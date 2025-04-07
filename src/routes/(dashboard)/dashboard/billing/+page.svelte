@@ -6,6 +6,6 @@
 
   <div class="main-container flex justify-center items-center mt-24">
 
-    <p class="font-semibold">Nothing to show</p>
+    <p class="font-semibold">No billings to show</p>
   </div>
 </div>

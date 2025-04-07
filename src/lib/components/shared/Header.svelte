@@ -37,7 +37,7 @@
 
   const brandLinks: Array<{ href: string; label: string }> = [
     { href: "https://www.btmholidays.com/", label: "BTM HOLIDAYS" },
-    { href: "https://www.journeyeasy.net/login", label: "JOURNEYEASY" },
+    { href: "https://my.journeyeasy.net", label: "JOURNEYEASY" },
     // { href: "#", label: "TREKBUYFLY" },
     {
       href: "https://marketplace.btmlimited.net/",

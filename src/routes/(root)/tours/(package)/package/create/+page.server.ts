@@ -234,7 +234,32 @@ export const actions = {
         });
       }
 
-      let resp = await response.json();
+      let resp: {
+        id: string
+        region_id: string
+        accommodation_id: string
+        active: boolean
+        no_of_people_attending: number
+        user_id: string
+        start_date: string
+        end_date: string
+        payment_status: string
+        detail?: { [x: string]: any };
+      } = await response.json() as {
+        id: string
+        region_id: string
+        accommodation_id: string
+        active: boolean
+        no_of_people_attending: number
+        user_id: string
+        start_date: string
+        end_date: string
+        payment_status: string
+        detail?: { [x: string]: any };
+      };
+
+      console.log("response", resp);
+
 
       if (resp?.detail) {
         return fail(400, {
@@ -246,20 +271,21 @@ export const actions = {
       return { form, ...resp };
     } catch (err: any) {
       const errors: { detail: string | { [x: string]: any } } = err as {
-        detail: string | { [x: string]: any };
+        detail:  { [x: string]: any };
       };
       console.error("An error has occured", errors);
 
       return fail(500, {
         form,
-        error: "Failed to create package and initiate payment",
+        error: "Failed to create package",
       });
     }
   },
   payment: async ({ request, locals, cookies }) => {
-    const formData = await request.formData()
+    const formData = await request.formData();
     const form = await superValidate(formData, zod(PaymentSchema));
-    const mode = formData.get("mode") as string
+    const mode = formData.get("mode") as string;
+    const tourPackageId = formData.get("tour_package_id")
 
     if (!form.valid) {
       return fail(400, { form });
@@ -295,9 +321,10 @@ export const actions = {
             expiry_year: form.data.expiryYear || "32",
             name: user.name,
             email: user.email,
-            tour_package_id: "",
-            mode: form.data.field && form.data.field?.pin === "pin" ? "pin" : "",
-            fields: {...form.data.field},
+            tour_package_id: tourPackageId,
+            mode:
+              form.data.field && form.data.field?.pin === "pin" ? "pin" : "",
+            fields: { ...form.data.field },
           }),
         }
       );

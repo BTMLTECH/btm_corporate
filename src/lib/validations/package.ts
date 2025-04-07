@@ -138,6 +138,7 @@ export const CreatePackageSchema = object({
 // });
 
 export const PackageSchema = object({
+  id: string().optional(),
   user: UserSchema,
   region: object({
     id: string().min(1),

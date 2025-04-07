@@ -52,7 +52,7 @@
           </li>
           <li class="mb-3">
             <a
-              href="https://www.journeyeasy.net/login"
+              href="https://my.journeyeasy.net/"
               class="text-gray-300 hover:text-white">Journeyeasy</a
             >
           </li>
