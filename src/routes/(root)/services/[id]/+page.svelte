@@ -57,9 +57,9 @@
 						{data.description}
 					</p>
 					<div class="flex">
-						<a href="#" class="bg-blue-500 text-white p-3 rounded-md w-fit block mt-5 mb-20">
+						<!-- <a href="#" class="bg-blue-500 text-white p-3 rounded-md w-fit block mt-5 mb-20">
 							Click To Book now</a
-						>
+						> -->
 					</div>
 				</div>
 			</div>
