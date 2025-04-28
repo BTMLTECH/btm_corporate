@@ -4,6 +4,7 @@ import {
 import { redirect } from "@sveltejs/kit";
 import { superValidate } from "sveltekit-superforms";
 import { zod } from "sveltekit-superforms/adapters";
+import { LIVE_URL, LOCAL_URL } from "$env/static/private";
 
 export async function load(event) {
   const form = await superValidate(event, zod(flightSearchSchema));

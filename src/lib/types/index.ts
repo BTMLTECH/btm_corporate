@@ -129,3 +129,9 @@ export interface Tour {
   price: string
   description: string
 }
+
+export interface SectionItem {
+  day?: number;
+  heading?: string;
+  text: string;
+}
