@@ -2,6 +2,7 @@
   export let label: string;
   export let color: string; // Tailwind color like "blue", "amber"
   export let svgPaths: string[];
+
 </script>
 
 <div class="flex items-center gap-3 group">

@@ -14,11 +14,12 @@
   <TourCard
     title={tourPackage.title}
     price={tourPackage.price_per_person_usd}
-    nights={`${tourPackage.duration_nights} nights / ${tourPackage.duration_days} days`}
+    days={tourPackage.duration_days}
+    nights={tourPackage.duration_nights}
     imageUrl={tourPackage.thumbnail_url}
   />
 
-  <Navigation></Navigation>
+  <Navigation />
 
   <div class="max-w-5xl mx-auto mt-8 space-y-8">
     <SectionCard
