@@ -10,7 +10,6 @@ export const load: PageServerLoad = async ({ fetch, locals, params }) => {
 
       if (!response.ok) {
         const { detail } = (await response.json()) as { detail: string };
-        // throw error(response.status, { message: detail });
         throw new Error(detail);
       }
       return response.json();
