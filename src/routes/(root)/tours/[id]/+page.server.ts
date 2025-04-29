@@ -1,4 +1,4 @@
-import { redirect } from "@sveltejs/kit";
+import { error, redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "../$types";
 import { LIVE_URL, LOCAL_URL } from "$env/static/private";
 import type { TourPackage } from "$lib/types/tourPackage";
@@ -9,11 +9,13 @@ export const load: PageServerLoad = async ({ fetch, locals, params }) => {
       const response = await fetch(endpoint);
 
       if (!response.ok) {
-        throw new Error(`Failed to fetch: ${endpoint}`);
+        const { detail } = (await response.json()) as { detail: string };
+        // throw error(response.status, { message: detail });
+        throw new Error(detail);
       }
       return response.json();
     } catch (err: any) {
-      throw Error("Something has happened");
+      throw error(404, { message: err.message as string});
     }
   }
   const { id } = params as { id: string };
