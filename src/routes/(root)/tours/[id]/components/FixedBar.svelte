@@ -10,6 +10,9 @@
       window.addEventListener('scroll', handleScroll);
       handleScroll();
     });
+
+    export let title: string
+    export let price: number
   </script>
   
   
@@ -21,9 +24,9 @@
             <img src="https://images.unsplash.com/photo-1572252009286-268acec5ca0a?..." alt="Tour" class="w-12 h-12 object-cover rounded-md shadow-sm" />
           </div>
           <div>
-            <h4 class="text-sm font-medium text-gray-800">Luxor and Aswan</h4>
+            <h4 class="text-sm font-medium text-gray-800">{title}</h4>
             <div class="flex items-baseline gap-1">
-              <span class="text-xl font-bold text-blue-600">USD 899</span>
+              <span class="text-xl font-bold text-blue-600">USD {price}</span>
             </div>
           </div>
         </div>
