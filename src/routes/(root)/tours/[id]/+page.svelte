@@ -5,10 +5,9 @@
   import SectionCard from "./components/SectionCard.svelte";
   import TourCard from "./components/TourCard.svelte";
 
-  export let data: PageData
+  export let data: PageData;
 
-  const {tourPackage} = data
-  console.log(tourPackage)
+  const { tourPackage } = data;
 </script>
 
 <div class="relative py-8 md:py-16 bg-gray-100">
@@ -30,5 +29,8 @@
     />
   </div>
 
-  <FixedBar title={tourPackage.title} price={tourPackage.price_per_person_usd} />
+  <FixedBar
+    title={tourPackage.title}
+    price={tourPackage.price_per_person_usd}
+  />
 </div>
