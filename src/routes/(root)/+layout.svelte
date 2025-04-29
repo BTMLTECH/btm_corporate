@@ -3,6 +3,7 @@
   import Footer from "$lib/components/shared/Footer.svelte";
   import Header from "$lib/components/shared/Header.svelte";
   import "$lib/css/app.css";
+  import "$lib/css/animations.css";
   import { Notifications } from "@tadashi/svelte-notification";
   import { onMount } from "svelte";
   const currentLocation = $page.url.pathname;
