@@ -1,6 +1,5 @@
 <script lang="ts">
-  import AmenityCard from "./AmenityCard.svelte";
-
+  
   export let title: string;
   export let price: number;
   export let nights: number;
