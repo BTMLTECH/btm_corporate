@@ -13,6 +13,7 @@
 
     export let title: string
     export let price: number
+    export let thumbnail: string
   </script>
   
   
@@ -21,7 +22,7 @@
       <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">
           <div class="hidden md:block relative group">
-            <img src="https://images.unsplash.com/photo-1572252009286-268acec5ca0a?..." alt="Tour" class="w-12 h-12 object-cover rounded-md shadow-sm" />
+            <img src={thumbnail} alt={title} class="w-12 h-12 object-cover rounded-md shadow-sm" />
           </div>
           <div>
             <h4 class="text-sm font-medium text-gray-800">{title}</h4>

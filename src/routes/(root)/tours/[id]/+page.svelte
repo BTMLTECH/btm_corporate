@@ -32,5 +32,6 @@
   <FixedBar
     title={tourPackage.title}
     price={tourPackage.price_per_person_usd}
+    thumbnail={tourPackage.thumbnail_url}
   />
 </div>
