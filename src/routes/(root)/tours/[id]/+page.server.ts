@@ -10,7 +10,7 @@ export const load: PageServerLoad = async ({ fetch, locals, params }) => {
 
       if (!response.ok) {
         const { detail } = (await response.json()) as { detail: string };
-        throw new Error(detail);
+        throw new Error(detail ?? "An unknown error has occured");
       }
       return response.json();
     } catch (err: any) {
