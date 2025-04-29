@@ -1,26 +1,18 @@
 <script lang="ts">
-  import Lagos from "$lib/images/Lagos.webp";
-  import Abuja from "$lib/images/Abuja.webp";
-  import PHC from "$lib/images/PHC.webp";
-  import Ibadan from "$lib/images/Ibadan.webp";
-  import Warri from "$lib/images/Warri.webp";
-  import Luggage from "$lib/images/luggage.webp";
-  import Safari from "$lib/images/safari.webp";
-  import Sea from "$lib/images/sea.webp";
-  import SightSeeing from "$lib/images/sight-seeing.webp";
-  import Family from "$lib/images/family.webp";
   import Tamale from "$lib/images/tamale.webp";
   import CastleView from "$lib/images/castle_view.webp";
   import Statue from "$lib/images/statue.webp";
   import BikeTrip from "$lib/images/bike-trip.webp";
   import Festival from "$lib/images/festival.webp";
-  import Tourist from "$lib/images/tourist.webp";
-  import { goto } from "$app/navigation";
   import tours from "$lib/data/tours.js";
   import Heading from "./components/Heading.svelte";
   import Tours from "./components/Tours.svelte";
+  import type { PageData } from "./$types";
 
-  export let data;
+  export let data: PageData;
+
+  let {tourPackages} = data
+
 </script>
 
 <Heading />
@@ -28,7 +20,7 @@
 <div>
   <section class="container mx-auto p-10 md:p-20 antialiased">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      <Tours {tours} />
+      <Tours tours={tourPackages} />
     </div>
   </section>
 </div>

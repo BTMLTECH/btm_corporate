@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { SectionItem } from "$lib/types";
+  import type { PageData } from "./$types";
   import FixedBar from "./components/FixedBar.svelte";
   import Navigation from "./components/Navigation.svelte";
   import SectionCard from "./components/SectionCard.svelte";
@@ -21,38 +22,32 @@
   const inclusions: SectionItem[] = [{ text: "Breakfast included" }];
   const exclusions: SectionItem[] = [{ text: "Visa not included" }];
   const terms: SectionItem[] = [{ text: "25% non-refundable deposit." }];
+
+  export let data: PageData
+
+  const {tourPackage} = data
+  console.log(tourPackage)
 </script>
 
 <div class="relative py-8 md:py-16 bg-gray-100">
   <TourCard
-    title="Lorem Ipsum"
-    price={890}
-    nights="5 nights / 6 days"
-    imageUrl={"https://images.unsplash.com/photo-1572252009286-268acec5ca0a?..."}
+    title={tourPackage.title}
+    price={tourPackage.price_per_person_usd}
+    nights={`${tourPackage.duration_nights} nights / ${tourPackage.duration_days} days`}
+    imageUrl={tourPackage.thumbnail_url}
   />
 
   <Navigation></Navigation>
 
   <div class="max-w-5xl mx-auto mt-8 space-y-8">
     <SectionCard
-      id="itinerary"
-      title="Itinerary"
-      color="sky"
-      items={[
-        {
-          day: 1,
-          heading: "Arrival in Cairo",
-          text: "Arrive at Cairo International Airport...",
-        },
-        {
-          day: 2,
-          heading: "Pyramids & Sphinx Tour",
-          text: "Full-day guided tour of the Pyramids of Giza...",
-        },
-      ]}
+      itineraries={tourPackage.itineraries}
+      inclusions={tourPackage.inclusions}
+      exclusions={tourPackage.exclusions}
+      termsAndCondtions={tourPackage.terms_conditions}
     />
 
-    <SectionCard
+    <!-- <SectionCard
       id="inclusions"
       title="Inclusions"
       color="teal"
@@ -71,7 +66,7 @@
       title="Terms & Conditions"
       color="orange"
       items={[{ text: "25% non-refundable deposit required at booking." }]}
-    />
+    /> -->
   </div>
 
   <FixedBar />

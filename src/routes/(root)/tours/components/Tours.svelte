@@ -1,22 +1,27 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import type { Tour, User } from "$lib/types";
+  import type { TourPackage } from "$lib/types/tourPackage";
 
-  export let tours: Tour[];
+  export let tours: TourPackage[];
 </script>
 
 {#each tours as tour, idx}
   <article
     class="flex flex-col shadow-lg group cursor-pointer transform duration-500 hover:-translate-y-1"
   >
-    <img class="w-full h-48 object-cover" src={tour.image} alt={tour.title} />
+    <img
+      class="w-full h-48 object-cover"
+      src={tour.thumbnail_url}
+      alt={tour.title}
+    />
     <div class="flex-1">
       <div class="p-5 pb-10">
         <h1 class="text-xl font-semibold text-gray-800 mt-4">
           {tour.title}
         </h1>
         <p class="text-gray-400 mt-2 leading-relaxed text-sm">
-          {tour.description.slice(0, 80)}...
+          {tour.description ? tour.description.slice(0, 80) : ""}...
         </p>
         <!-- Added Pricing Section -->
         <div class="mt-4">
@@ -70,7 +75,7 @@
           <div class="text-center">
             <p class="text-gray-500 text-sm font-medium">Starting From</p>
             <p class="text-2xl font-bold text-gray-700">
-              USD {tour.price}
+              USD {tour.price_per_person_usd}
             </p>
             <p class="text-gray-400 text-xs mt-1">
               Per Person On Double Sharing Basis
