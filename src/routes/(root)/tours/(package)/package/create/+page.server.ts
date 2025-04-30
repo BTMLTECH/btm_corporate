@@ -235,28 +235,26 @@ export const actions = {
       }
 
       let resp: {
-        id: string
-        region_id: string
-        accommodation_id: string
-        active: boolean
-        no_of_people_attending: number
-        user_id: string
-        start_date: string
-        end_date: string
+        id: string;
+        region_id: string;
+        accommodation_id: string;
+        active: boolean;
+        no_of_people_attending: number;
+        user_id: string;
+        start_date: string;
+        end_date: string;
         detail?: { [x: string]: any };
-      } = await response.json() as {
-        id: string
-        region_id: string
-        accommodation_id: string
-        active: boolean
-        no_of_people_attending: number
-        user_id: string
-        start_date: string
-        end_date: string
+      } = (await response.json()) as {
+        id: string;
+        region_id: string;
+        accommodation_id: string;
+        active: boolean;
+        no_of_people_attending: number;
+        user_id: string;
+        start_date: string;
+        end_date: string;
         detail?: { [x: string]: any };
       };
-
-
 
       if (resp?.detail) {
         return fail(400, {
@@ -268,7 +266,7 @@ export const actions = {
       return { form, ...resp };
     } catch (err: any) {
       const errors: { detail: string | { [x: string]: any } } = err as {
-        detail:  { [x: string]: any };
+        detail: { [x: string]: any };
       };
       console.error("An error has occured", errors);
 
@@ -282,7 +280,7 @@ export const actions = {
     const formData = await request.formData();
     const form = await superValidate(formData, zod(PaymentSchema));
     const mode = formData.get("mode") as string;
-    const tourPackageId = formData.get("tour_package_id")
+    const tourPackageId = formData.get("tour_package_id");
 
     if (!form.valid) {
       return fail(400, { form });
@@ -335,7 +333,6 @@ export const actions = {
         message: string;
         authorization: { mode: string; redirect: string };
       };
-
 
       if (data.success === "pending") {
         if (
