@@ -11,12 +11,13 @@
   import { PaymentSchema } from "$lib/validation";
   import { goto } from "$app/navigation";
   import Countries from "./components/Countries.svelte";
+  import ThankYou from "./components/ThankYou.svelte";
 
   export let data: PageData;
   export let showAVS: boolean = false;
-  export let showPin: boolean = false
+  export let showPin: boolean = false;
 
-  let showPayment: boolean = false;
+  let showThankYouPage: boolean = false;
 
   const {
     accommodations,
@@ -41,7 +42,6 @@
     dataType: "json",
     resetForm: false,
     onResult: (e) => {
-      console.log("result from server", e.result);
       if (e.result.status === 401 || e.result.status === 403) {
         acts.add({
           mode: "error",
@@ -60,7 +60,7 @@
         });
 
         setTimeout(() => {
-          showPayment = true;
+          showThankYouPage = true;
           window.scrollTo(0, 0);
         }, 2000);
 
@@ -89,10 +89,7 @@
     dataType: "json",
     resetForm: false,
     onResult: (e) => {
-      console.log("Result from payment request", e);
-
       if (e.result.status !== 200) {
-        console.log("An error occured", e.result);
         return;
       }
 
@@ -111,9 +108,8 @@
             message: e.result.data?.message,
           });
 
-          console.log(e.result);
           // show pin modal
-          showPin = true
+          showPin = true;
         }
       }
     },
@@ -136,7 +132,7 @@
 </script>
 
 <div class="relative w-4/5 lg:w-3/4 mx-auto">
-  {#if !showPayment}
+  {#if !showThankYouPage}
     <!-- <PackageNav {form} {previewPackage} /> -->
     <div class="mx-auto pt-10 md:pt-8 w-full sm:w-5/6 md:w-4/5 lg:w-3/4">
       <form
@@ -168,7 +164,6 @@
               : ''} bg-indigo-600 hover:bg-indigo-800 ease-in transition-all text-white rounded"
             on:click={(e) => {
               validatePackage().then((pf) => {
-                console.log(pf);
                 if (!pf.valid) {
                   acts.add({
                     message: "Please check your entries",
@@ -190,7 +185,7 @@
       </p>
     </div>
   {:else}
-    <form
+    <!-- <form
       name="payment-form"
       method="POST"
       action="?/payment"
@@ -441,38 +436,9 @@
           >{$submittingPayment ? "Please wait..." : "Continue"}</button
         >
       </div>
-    </form>
+    </form> -->
+    <ThankYou />
   {/if}
 </div>
 
 <Notifications />
-
-<!-- <style lang="postcss">
-  :global(.btm-input) {
-    @apply block w-full rounded-md p-1.5 text-gray-900 shadow-sm ring-1 ring-inset  outline-none;
-  }
-
-  :global(.btm-input::placeholder) {
-    @apply text-gray-400;
-  }
-
-  :global(.btm-input:focus) {
-    @apply ring-inset;
-  }
-
-  :global(.btm-input-focus:focus) {
-    @apply ring-indigo-600 ring-2;
-  }
-
-  :global(.btm-input-focus) {
-    @apply ring-gray-300;
-  }
-
-  :global(.btm-input-focus-err) {
-    @apply ring-red-300 border border-red-600;
-  }
-
-  :global(.btm-input-focus-err:focus) {
-    @apply ring-red-600;
-  }
-</style> -->

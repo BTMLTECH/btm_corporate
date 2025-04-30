@@ -243,7 +243,6 @@ export const actions = {
         user_id: string
         start_date: string
         end_date: string
-        payment_status: string
         detail?: { [x: string]: any };
       } = await response.json() as {
         id: string
@@ -254,11 +253,9 @@ export const actions = {
         user_id: string
         start_date: string
         end_date: string
-        payment_status: string
         detail?: { [x: string]: any };
       };
 
-      console.log("response", resp);
 
 
       if (resp?.detail) {
@@ -330,7 +327,6 @@ export const actions = {
       );
 
       if (response.status !== 200) {
-        console.log("response", await response.json());
         return;
       }
 
@@ -340,7 +336,6 @@ export const actions = {
         authorization: { mode: string; redirect: string };
       };
 
-      console.log("responsessss", data);
 
       if (data.success === "pending") {
         if (
