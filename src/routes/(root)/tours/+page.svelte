@@ -8,6 +8,7 @@
   import Heading from "./components/Heading.svelte";
   import Tours from "./components/Tours.svelte";
   import type { PageData } from "./$types";
+  import TourCard from "./components/TourCard.svelte";
 
   export let data: PageData;
 
@@ -17,15 +18,27 @@
 <Heading />
 
 {#if tourPackages && tourPackages.length}
-  <section class="container mx-auto p-10 md:p-20 antialiased">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      <Tours tours={tourPackages} />
+  <section class="container mx-auto py-10 md:py-20 md:pb-10 antialiased">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {#each tourPackages as tourPackage}
+        <TourCard
+          tourID={tourPackage.id}
+          title={tourPackage.title}
+          description={tourPackage.description ?? ""}
+          package_type={tourPackage.package_type}
+          duration_nights={tourPackage.duration_nights}
+          price_per_family_usd={tourPackage.price_per_family_usd}
+          price_per_person_usd={tourPackage.price_per_person_usd}
+          thumbnail_url={tourPackage.thumbnail_url}
+          price_type={tourPackage.price_type === "PER_FAMILY" ? "PER_FAMILY" : "PER_PERSON"}
+        />
+      {/each}
     </div>
 
     <div class="pt-16 flex justify-center items-center">
       <a
         href="/tours/all"
-        class="rounded-full px-4 py-2 border border-blue-500 hover:bg-blue-100 transition-all ease-in duration-200"
+        class="rounded-full px-4 py-2 border text-gray-700 font-semibold border-blue-500 hover:bg-blue-100 transition-all ease-in duration-200"
         >See more</a
       >
     </div>
