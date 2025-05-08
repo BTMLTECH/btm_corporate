@@ -62,12 +62,6 @@ interface AccommodationSchema {
   price: number;
 }
 
-// interface ActivitySchema {
-//   id: string;
-//   name: string;
-//   description: string;
-//   price: number;
-// }
 
 interface TransportationSchema {
   id: string;
@@ -170,7 +164,7 @@ export const actions = {
 
     try {
       const response = await fetch(
-        `${process.env.NODE_ENV === "production" ? LIVE_URL + "/tour-package/add" : LOCAL_URL + "/tour-package/add"}`,
+        `${process.env.NODE_ENV === "production" ? LIVE_URL + "/tour-package/user/create" : LOCAL_URL + "/tour-package/user/create"}`,
         {
           method: "POST",
           credentials: "include",

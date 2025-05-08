@@ -4,26 +4,29 @@
   import Statue from "$lib/images/statue.webp";
   import BikeTrip from "$lib/images/bike-trip.webp";
   import Festival from "$lib/images/festival.webp";
-  import tours from "$lib/data/tours.js";
+  import Tourist from "$lib/images/tourist.webp";
   import Heading from "./components/Heading.svelte";
   import Tours from "./components/Tours.svelte";
   import type { PageData } from "./$types";
 
   export let data: PageData;
 
-  let {tourPackages} = data
-
+  let { tourPackages } = data;
 </script>
 
 <Heading />
 
-<div>
-  <section class="container mx-auto p-10 md:p-20 antialiased">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-      <Tours tours={tourPackages} />
-    </div>
-  </section>
-</div>
+{#if tourPackages && tourPackages.length}
+<section class="container mx-auto p-10 md:p-20 antialiased">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <Tours tours={tourPackages} />
+  </div>
+
+  <div class="pt-16 flex justify-center items-center">
+    <a href="/tours/all" class="btn-primary">View all tours</a>
+  </div>
+</section>
+{/if}
 
 <section id="main-content">
   <div class="relative">
@@ -106,7 +109,7 @@
     <div class="flex flex-col lg:flex-row items-center lg:space-x-8 my-12">
       <div class="w-full lg:w-1/2 mb-8 lg:mb-0">
         <img
-          src="	https://www.btmghana.net/_app/immutable/assets/tourist.Bu3ANcii.webp"
+          src={Tourist}
           alt="A lady enjoying a view"
           class="rounded-lg shadow-lg w-full object-cover"
         />

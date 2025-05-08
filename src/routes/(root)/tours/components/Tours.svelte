@@ -75,7 +75,7 @@
           <div class="text-center">
             <p class="text-gray-500 text-sm font-medium">Starting From</p>
             <p class="text-2xl font-bold text-gray-700">
-              USD {tour.price_per_person_usd}
+              USD {tour.price_per_person_usd ?? tour.price_per_family_usd}
             </p>
             <p class="text-gray-400 text-xs mt-1">
               Per Person On Double Sharing Basis

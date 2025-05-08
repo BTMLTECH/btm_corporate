@@ -1,50 +1,33 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-
-  let activeSection: string = "itinerary";
-
-  onMount(() => {
-    const sections = document.querySelectorAll<HTMLElement>("[id]");
-
-    function setActiveLink() {
-      let current = "";
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        if (window.scrollY >= sectionTop - 120) {
-          current = section.getAttribute("id") ?? "";
-        }
-      });
-
-      activeSection = current || "itinerary";
-    }
-
-    window.addEventListener("scroll", setActiveLink);
-    setActiveLink();
-  });
+  let activeSection: string = "overview";
 
   function linkClasses(section: string) {
     const colors: Record<string, string> = {
+      overview: "green",
       itinerary: "blue",
       inclusions: "teal",
       exclusions: "pink",
       terms: "orange",
     };
-    const color = colors[section] || "blue";
+    const color = colors[section] || "green";
 
     return activeSection === section
-      ? `text-${color}-600 bg-${color}-50`
-      : `text-gray-600 hover:text-${color}-600 hover:bg-${color}-50`;
+      ? `text-${color}-600 bg-${color}-100`
+      : `text-gray-600 hover:text-${color}-600 hover:bg-${color}-200`;
   }
 
   function handleClick(section: string) {
     activeSection = section;
 
+    window.location.href = location.pathname + `#${section}`;
+
     const el = document.getElementById(section);
+
     if (el) {
-      const yOffset = -80; // <-- Adjust depending on your sticky nav height
+      const yOffset = -180;
       const y = el.getBoundingClientRect().top + window.scrollY + yOffset;
 
-      window.scrollTo({ top: y, behavior: 'smooth' });
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
   }
 </script>
@@ -56,14 +39,40 @@
     class="flex overflow-x-auto py-4 px-4 space-x-4 scrollbar-hide snap-x snap-mandatory touch-pan-x"
   >
     <a
-    on:click={() => handleClick("itinerary")}
-      href="#itinerary"
-      class="flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap transition-all duration-300 group snap-start relative {linkClasses(
-        'itinerary'
-      )}"
+      href="#overview"
+      on:click|preventDefault={() => handleClick("overview")}
+      class="flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap transition-all duration-300 group snap-start relative {activeSection === "overview" ? "text-green-600 bg-green-100" : "text-gray-600 hover:text-green-600 hover:bg-green-200"}"
     >
       <div
-        class="w-8 h-8 rounded-lg bg-sky-50 flex items-center justify-center group-hover:bg-sky-100 transition-colors"
+        class="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center group-hover:bg-green-200 transition-colors"
+      >
+        <svg
+          class="w-5 h-5 text-green-600"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+          />
+        </svg>
+      </div>
+      <span class="font-medium">Overview</span>
+      <div
+        class="absolute -bottom-1 left-0 right-0 h-0.5 bg-green-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
+      ></div>
+    </a>
+
+    <a
+      on:click|preventDefault={() => handleClick("itinerary")}
+      href="#itinerary"
+      class="flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap transition-all duration-300 group snap-start relative {activeSection === "itinerary" ? "text-blue-600 bg-blue-100" : "text-gray-600 hover:text-blue-600 hover:bg-blue-200"}"
+    >
+      <div
+        class="w-8 h-8 rounded-lg bg-sky-50 flex items-center justify-center group-hover:bg-sky-200 transition-colors"
       >
         <svg
           class="w-5 h-5 text-sky-600"
@@ -87,13 +96,11 @@
 
     <a
       href="#inclusions"
-    on:click={() => handleClick("inclusions")}
-    class="flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap transition-all duration-300 group snap-start relative {linkClasses(
-        'inclusions'
-      )}"
+      on:click|preventDefault={() => handleClick("inclusions")}
+      class="flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap transition-all duration-300 group snap-start relative {activeSection === "inclusions" ? "text-teal-600 bg-teal-100" : "text-gray-600 hover:text-teal-600 hover:bg-teal-200"}"
     >
       <div
-        class="w-8 h-8 rounded-lg bg-teal-50 flex items-center justify-center group-hover:bg-teal-100 transition-colors"
+        class="w-8 h-8 rounded-lg bg-teal-50 flex items-center justify-center group-hover:bg-teal-200 transition-colors"
       >
         <svg
           class="w-5 h-5 text-teal-600"
@@ -117,13 +124,11 @@
 
     <a
       href="#exclusions"
-    on:click={() => handleClick("exclusions")}
-    class="flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap transition-all duration-300 group snap-start relative {linkClasses(
-        'exclusions'
-      )}"
+      on:click|preventDefault={() => handleClick("exclusions")}
+      class="flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap transition-all duration-300 group snap-start relative {activeSection === "exclusions" ? "text-pink-600 bg-pink-100" : "text-gray-600 hover:text-pink-600 hover:bg-pink-200"}"
     >
       <div
-        class="w-8 h-8 rounded-lg bg-pink-50 flex items-center justify-center group-hover:bg-pink-100 transition-colors"
+        class="w-8 h-8 rounded-lg bg-pink-50 flex items-center justify-center group-hover:bg-pink-200 transition-colors"
       >
         <svg
           class="w-5 h-5 text-pink-600"
@@ -147,13 +152,11 @@
 
     <a
       href="#terms"
-    on:click={() => handleClick("terms")}
-    class="flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap transition-all duration-300 group snap-start relative {linkClasses(
-        'terms'
-      )}"
+      on:click|preventDefault={() => handleClick("terms")}
+      class="flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap transition-all duration-300 group snap-start relative {activeSection === "terms" ? "text-orange-600 bg-orange-100" : "text-gray-600 hover:text-orange-600 hover:bg-orange-200"}"
     >
       <div
-        class="w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center group-hover:bg-orange-100 transition-colors"
+        class="w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center group-hover:bg-orange-200 transition-colors"
       >
         <svg
           class="w-5 h-5 text-orange-600"
