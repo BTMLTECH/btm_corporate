@@ -17,15 +17,19 @@
 <Heading />
 
 {#if tourPackages && tourPackages.length}
-<section class="container mx-auto p-10 md:p-20 antialiased">
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-    <Tours tours={tourPackages} />
-  </div>
+  <section class="container mx-auto p-10 md:p-20 antialiased">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <Tours tours={tourPackages} />
+    </div>
 
-  <div class="pt-16 flex justify-center items-center">
-    <a href="/tours/all" class="btn-primary">View all tours</a>
-  </div>
-</section>
+    <div class="pt-16 flex justify-center items-center">
+      <a
+        href="/tours/all"
+        class="rounded-full px-4 py-2 border border-blue-500 hover:bg-blue-100 transition-all ease-in duration-200"
+        >See more</a
+      >
+    </div>
+  </section>
 {/if}
 
 <section id="main-content">
