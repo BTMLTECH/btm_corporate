@@ -7,7 +7,7 @@
 	<div class="w-[calc(100%_-_3rem)] mx-auto max-w-lg sm:max-w-3xl">
 		<!-- <div class="text-xl text-gray-900/60 mb-3">Our Services</div> -->
 
-		<h2 class="text-4xl font-bold font-display tracking-tight text-gray-800 sm:text-6xl mb-2">
+		<h2 class="text-4xl font-bold font-display tracking-tight text-gray-800 sm:text-4xl mb-2">
 			Discover Our Travel Services!
 		</h2>
 
