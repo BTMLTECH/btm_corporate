@@ -2,8 +2,11 @@
   import { fade } from "svelte/transition";
   import { onMount } from "svelte";
   import { writable } from "svelte/store";
+  import type { PageData } from "../$types";
+  import Obt from "./OBT.svelte";
   
   export let heroImgs: Array<string>;
+  export let data: PageData;
 
   const currentImageIndex = writable(0);
   const delay = 3000; // time in ms between image changes
@@ -23,7 +26,7 @@
 
 <section id="hero-content" class="relative w-full">
   <div
-    class="relative overflow-hidden w-full h-full aspect-square md:h-[480px]"
+    class="relative overflow-hidden w-full h-full aspect-square md:h-[380px]"
   >
     {#each heroImgs as heroImg, i}
       {#if $currentImageIndex === i}
@@ -37,7 +40,9 @@
     <div
       class="absolute md:top-44 inset-x-0 flex flex-col justify-center items-center aspect-square md:aspect-auto"
     >
-      <div class="text-center text-white w-[90%] mx-auto">
+
+    <Obt {data} />
+      <!-- <div class="text-center text-white w-[90%] mx-auto">
         <h1 class="text-[7.2vmin] leading-tight font-bold">
           Helping Africans Travel More
         </h1>
@@ -47,7 +52,7 @@
           Let us transform your travel dreams into extraordinary adventures with
           personalized experiences, tailored just for you.
         </p>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>

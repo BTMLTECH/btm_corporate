@@ -89,10 +89,10 @@
 
 <div>
   <!-- Hero -->
-  <Hero heroImgs={[Hero1, Hero2, Hero3]} />
+  <Hero {data} heroImgs={[Hero1, Hero2, Hero3]} />
 
   <!-- Flight Search -->
-  <Obt {data} />
+  <!-- <Obt {data} /> -->
 
   <Services serviceList={services} swipe={swiper} />
 

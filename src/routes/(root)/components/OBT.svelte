@@ -187,7 +187,7 @@
 </script>
 
 <div
-  class="obt-container grid relative -top-[70px] sm:-top-[130px] md:-top-[100px] min-h-[300px] mb-[-40px] sm:mb-[-70px] absolute top-20"
+  class="obt-container grid relative -top-[70px] sm:-top-[130px] md:-top-[100px] min-h-[300px] mb-[-40px] sm:mb-[-70px]"
 >
   <div class="w-full px-4 relative">
     <!-- OBT -->

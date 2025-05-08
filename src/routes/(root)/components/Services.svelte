@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 </svelte:head>
 
-<section id="services-content" class="relative">
+<section id="services-content" class="relative mt-12">
 	<div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
 		<div class="text-center">
 			<h2 class="text-3xl font-bold font-display leading-tight text-gray-900">Services</h2>
