@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onMount } from "svelte";
+
   let activeSection: string = "overview";
 
   function linkClasses(section: string) {
@@ -30,6 +32,47 @@
       window.scrollTo({ top: y, behavior: "smooth" });
     }
   }
+
+  // onMount(() => {
+  //   const sections = document.querySelectorAll<HTMLElement>("[id]");
+
+  //   function setActiveLink() {
+  //     let current = "";
+  //     sections.forEach((section) => {
+  //       const sectionTop = section.offsetTop;
+  //       if (window.scrollY >= sectionTop - 80) {
+  //         current = section.getAttribute("id") ?? "itinerary";
+  //       }
+  //     });
+
+  //     activeSection = current || "itinerary";
+  //   }
+
+  //   window.addEventListener("scroll", setActiveLink);
+  //   setActiveLink();
+  // });
+
+  onMount(() => {
+    const sections = document.querySelectorAll<HTMLElement>("section[id]");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.find((entry) => entry.isIntersecting);
+        if (visible) {
+          const id = visible.target.getAttribute("id");
+          if (id) activeSection = id;
+        }
+      },
+      {
+        threshold: 0.6, // Section must be ~60% visible
+        rootMargin: "0px 0px -30% 0px", // Helps trigger a bit earlier
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  });
 </script>
 
 <nav

@@ -55,70 +55,7 @@
 <header class="bg-white fixed inset-x-0 top-0 shadow-md z-[206]">
   <div class="relative bg-gray-50">
     <div class="mr-6 px-2 py-2">
-      {#if !isLoggedIn && !user}
-        <div class="flex justify-end space-x-6 items-center">
-          <!-- Dropdown structure -->
-          <div class="relative inline-block">
-            <div>
-              <button
-                on:click={() => {
-                  isCountryDialogOpen = !isCountryDialogOpen;
-                }}
-                class="inline-flex justify-center items-center w-full rounded-md border border-gray-300 shadow-sm px-2 py-1 bg-white text-xs font-medium text-gray-700 hover:bg-gray-50 focus:outline-none relative z-10 transition duration-200"
-              >
-                {#if selectedCountry === "Nigeria"}
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/7/79/Flag_of_Nigeria.svg"
-                    alt="BTM Nigeria"
-                    class="w-4 h-3 mr-1"
-                  />
-                  Nigeria
-                {/if}
-                {#if selectedCountry === "Ghana"}
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/1/19/Flag_of_Ghana.svg"
-                    alt="BTM Ghana"
-                    class="w-4 h-3 mr-1"
-                  />
-                  Ghana
-                {/if}
-                <svg
-                  class="-mr-1 ml-1 h-4 w-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-              </button>
-            </div>
-            {#if isCountryDialogOpen}
-              <div
-                class="origin-top-right absolute right-0 mt-1 w-40 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-2 z-20 transition duration-200"
-              >
-                <a
-                  href="https://btmlimited.net"
-                  target="_blank"
-                  class="px-2 py-1 text-xs text-gray-700 hover:bg-gray-100 flex items-center"
-                  role="menuitem"
-                  on:click={(e) => (isCountryDialogOpen = false)}
-                >
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/7/79/Flag_of_Nigeria.svg"
-                    alt="BTM Nigeria"
-                    class="w-4 h-3 mr-1"
-                  /> Nigeria
-                </a>
-              </div>
-            {/if}
-          </div>
-        </div>
-      {:else}
+      {#if isLoggedIn && user}
         <div class="flex justify-end items-center space-x-4">
           <p class="text-sm">
             Welcome back, <span class="font-semibold text-gray-600"
