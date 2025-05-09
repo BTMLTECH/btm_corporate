@@ -7,7 +7,7 @@
 </svelte:head>
 
 <div
-  class="min-h-screen flex flex-col items-center justify-center bg-gray-100 text-center px-4"
+  class="min-h-screen flex flex-col items-center justify-center bg-gray-100 text-center px-4 relative -top-7"
 >
   <h1 class="text-6xl font-bold text-red-600">{$page.status}</h1>
   <h2 class="text-2xl font-semibold mt-4 text-gray-800">

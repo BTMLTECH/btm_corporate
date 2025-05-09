@@ -9,7 +9,7 @@
   console.log("data", data);
 </script>
 
-<div class="max-w-7xl mx-auto py-16 p-4">
+<div class="max-w-7xl mx-auto py-16 p-4 relative -top-7">
   <!-- Search and Sort Bar -->
   <div
     class="flex flex-col sm:flex-row items-center justify-between mb-8 gap-4"

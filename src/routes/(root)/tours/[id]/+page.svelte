@@ -10,7 +10,7 @@
   const { tourPackage } = data;
 </script>
 
-<div class="relative py-8 md:py-16 bg-gray-100">
+<div class="relative -top-7 py-8 md:py-16 bg-gray-100">
   <TourCard
     title={tourPackage.title}
     price={tourPackage.price_per_person_usd ??

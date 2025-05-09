@@ -4,7 +4,7 @@
 	export let data;
 </script>
 
-<div class="flex">
+<div class="flex relative -top-7">
 	<aside
 		class="hidden md:block max-w-[300px] w-full max-h-[100vh] h-full bg-neutral-1 p-4 overflow-y-scroll"
 	>

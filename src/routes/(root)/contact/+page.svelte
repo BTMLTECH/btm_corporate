@@ -1,5 +1,5 @@
 <section
-  class="relative py-12 lg:py-28 px-0 bg-gray-100 bg-cover bg-center text-center"
+  class="relative -top-7 py-12 lg:py-28 px-0 bg-gray-100 bg-cover bg-center text-center"
   style="background-image: url('https://www.btmghana.net/_app/immutable/assets/jumbo-image.BzyAVUnH.webp');"
 >
   <div class="absolute inset-0 bg-gray-600 bg-opacity-60 z-10"></div>
