@@ -1,9 +1,9 @@
 <script lang="ts">
+  import TourCard from "./components/TourCard.svelte";
   import type { PageData } from "./$types";
   import FixedBar from "./components/FixedBar.svelte";
   import Navigation from "./components/Navigation.svelte";
   import SectionCard from "./components/SectionCard.svelte";
-  import TourCard from "./components/TourCard.svelte";
 
   export let data: PageData;
 
@@ -19,6 +19,7 @@
     days={tourPackage.duration_days}
     nights={tourPackage.duration_nights}
     imageUrl={tourPackage.thumbnail_url}
+    packageType={tourPackage.package_type}
   />
 
   <Navigation />

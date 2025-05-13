@@ -15,9 +15,9 @@
 </script>
 
 <!-- Overview card -->
-<div
+<section
   id="overview"
-  class="bg-gradient-to-br from-amber-50 to-amber-100/50 rounded-2xl overflow-hidden shadow-sm border border-amber-100 hover:shadow-md transition-all duration-300"
+  class="bg-gradient-to-br from-lime-50 to-lime-100/50 rounded-2xl overflow-hidden shadow-sm border border-greem-100 hover:shadow-md transition-all duration-300"
 >
   <div class="p-8">
     <div class="flex items-center gap-4 mb-8">
@@ -29,7 +29,7 @@
           width="32"
           height="32"
           viewBox="0 0 24 24"
-          class="w-6 h-6 text-amber-500"
+          class="w-6 h-6 text-lime-500"
           ><path
             fill="currentColor"
             d="M14.485 19.737L9 17.823l-3.902 1.509q-.21.084-.401.053q-.192-.03-.354-.132t-.252-.274T4 18.583V6.41q0-.282.13-.499t.378-.303l3.957-1.344q.124-.05.257-.075q.134-.025.278-.025t.277.025t.257.075L15 6.177l3.902-1.508q.21-.084.401-.054t.354.132q.161.102.252.274t.091.396v12.259q0 .284-.159.495q-.158.212-.426.298l-3.9 1.287q-.13.05-.256.065q-.125.015-.26.015q-.136 0-.26-.024t-.255-.075m.016-1.033v-11.7l-5-1.746v11.7z"
@@ -43,10 +43,10 @@
       <p>{overview ?? ""}</p>
     </div>
   </div>
-</div>
+</section>
 
 <!-- Itineraries card -->
-<div
+<section
   id="itinerary"
   class="bg-gradient-to-br from-sky-50 to-sky-100/50 rounded-2xl overflow-hidden shadow-sm border border-sky-100 hover:shadow-md transition-all duration-300"
 >
@@ -98,10 +98,10 @@
       {/each}
     </div>
   </div>
-</div>
+</section>
 
 <!-- Inclusions card -->
-<div
+<section
   id="inclusions"
   class="bg-gradient-to-br from-teal-50 to-teal-100/50 rounded-2xl overflow-hidden shadow-sm border border-teal-100 hover:shadow-md transition-all duration-300"
 >
@@ -130,10 +130,10 @@
       <p class="text-gray-700">{inclusion.description}</p>
     {/each}
   </div>
-</div>
+</section>
 
 <!-- Exclusions card -->
-<div
+<section
   id="exclusions"
   class="bg-gradient-to-br from-pink-50 to-pink-100/50 rounded-2xl overflow-hidden shadow-sm border border-pink-100 hover:shadow-md transition-all duration-300"
 >
@@ -162,10 +162,10 @@
       <p class="text-gray-700">{exclusion.description}</p>
     {/each}
   </div>
-</div>
+</section>
 
 <!-- Terms and conditions card -->
-<div
+<section
   id="terms"
   class="bg-gradient-to-br from-orange-50 to-orange-100/50 rounded-2xl overflow-hidden shadow-sm border border-orange-100 hover:shadow-md transition-all duration-300 mb-16"
 >
@@ -204,4 +204,4 @@
       </div>
     </div>
   </div>
-</div>
+</section>

@@ -5,13 +5,13 @@
 
   function linkClasses(section: string) {
     const colors: Record<string, string> = {
-      overview: "green",
+      overview: "lime",
       itinerary: "blue",
       inclusions: "teal",
       exclusions: "pink",
       terms: "orange",
     };
-    const color = colors[section] || "green";
+    const color = colors[section] || "lime";
 
     return activeSection === section
       ? `text-${color}-600 bg-${color}-100`
@@ -53,7 +53,9 @@
   // });
 
   onMount(() => {
-    const sections = document.querySelectorAll<HTMLElement>("section[id]");
+    const sections = document.querySelectorAll<HTMLElement>("div[id]");
+
+      console.log("sections", sections)
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -76,7 +78,7 @@
 </script>
 
 <nav
-  class="max-w-5xl mx-auto mt-8 sticky top-[6.2rem] z-[205] bg-white/90 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-sm"
+  class="max-w-5xl mx-auto mt-8 sticky top-[72px] z-[205] bg-white/90 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-sm"
 >
   <div
     class="flex overflow-x-auto py-4 px-4 space-x-4 scrollbar-hide snap-x snap-mandatory touch-pan-x"
@@ -86,14 +88,14 @@
       on:click|preventDefault={() => handleClick("overview")}
       class="flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap transition-all duration-300 group snap-start relative {activeSection ===
       'overview'
-        ? 'text-green-600 bg-green-100'
-        : 'text-gray-600 hover:text-green-600 hover:bg-green-200'}"
+        ? 'text-lime-600 bg-lime-100'
+        : 'text-gray-600 hover:text-lime-600 hover:bg-lime-200'}"
     >
       <div
-        class="w-8 h-8 rounded-lg bg-green-50 flex items-center justify-center group-hover:bg-green-200 transition-colors"
+        class="w-8 h-8 rounded-lg bg-lime-50 flex items-center justify-center group-hover:bg-lime-200 transition-colors"
       >
         <svg
-          class="w-5 h-5 text-green-600"
+          class="w-5 h-5 text-lime-600"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -108,7 +110,7 @@
       </div>
       <span class="font-medium">Overview</span>
       <div
-        class="absolute -bottom-1 left-0 right-0 h-0.5 bg-green-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
+        class="absolute -bottom-1 left-0 right-0 h-0.5 bg-lime-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
       ></div>
     </a>
 
