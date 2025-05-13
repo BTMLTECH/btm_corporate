@@ -1,4 +1,4 @@
-<section id="main-content" class="relative -top-7">
+<section id="main-content" class="relative">
   <div class="w-10/12 md:w-9/12 mx-auto mt-20">
     <h2 class="text-4xl font-semibold pt-20 mb-5">
       Frequently asked questions

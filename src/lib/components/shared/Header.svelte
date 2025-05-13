@@ -53,9 +53,9 @@
 </script>
 
 <header class="bg-white fixed inset-x-0 top-0 shadow-md z-[206]">
-  <div class="relative bg-gray-50">
-    <div class="mr-6 px-2 py-2">
-      {#if isLoggedIn && user}
+  {#if isLoggedIn && user}
+    <div class="relative bg-gray-50">
+      <div class="mr-6 px-2 py-2">
         <div class="flex justify-end items-center space-x-4">
           <p class="text-sm">
             Welcome back, <span class="font-semibold text-gray-600"
@@ -70,9 +70,9 @@
             </div>
           </a>
         </div>
-      {/if}
+      </div>
     </div>
-  </div>
+  {/if}
 
   <nav
     class="flex items-center justify-between p-3 lg:px-8"

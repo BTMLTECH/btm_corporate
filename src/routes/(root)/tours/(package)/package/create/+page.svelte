@@ -131,7 +131,7 @@
     };
 </script>
 
-<div class="relative -top-7 w-4/5 lg:w-3/4 mx-auto">
+<div class="relative w-4/5 lg:w-3/4 mx-auto">
   {#if !showThankYouPage}
     <!-- <PackageNav {form} {previewPackage} /> -->
     <div class="mx-auto pt-10 md:pt-8 w-full sm:w-5/6 md:w-4/5 lg:w-3/4">

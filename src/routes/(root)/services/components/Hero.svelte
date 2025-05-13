@@ -1,5 +1,5 @@
 <div
-	class="hero relative -top-7 z-[1] py-16 lg:py-14 px-0 bg-gray-100 bg-cover bg-no-repeat bg-center text-center"
+	class="hero relative z-[1] py-16 lg:py-14 px-0 bg-gray-100 bg-cover bg-no-repeat bg-center text-center"
 	style="
         background-image: url('https://d3ae4wrz2ljkbq.cloudfront.net/components/img-16-9-light-1.svg');
       "

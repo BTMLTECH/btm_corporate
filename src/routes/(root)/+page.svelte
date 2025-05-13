@@ -87,7 +87,7 @@
   });
 </script>
 
-<div class="relative -top-7">
+<div class="relative">
   <!-- Hero -->
   <Hero {data} heroImgs={[Hero1, Hero2, Hero3]} />
 
