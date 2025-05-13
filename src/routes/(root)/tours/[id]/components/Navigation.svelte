@@ -53,9 +53,7 @@
   // });
 
   onMount(() => {
-    const sections = document.querySelectorAll<HTMLElement>("div[id]");
-
-      console.log("sections", sections)
+    const sections = document.querySelectorAll<HTMLElement>("section[id]");
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -66,7 +64,7 @@
         }
       },
       {
-        threshold: 0.6, // Section must be ~60% visible
+        threshold: 0.45, // Section must be ~60% visible
         rootMargin: "0px 0px -30% 0px", // Helps trigger a bit earlier
       }
     );
@@ -86,7 +84,7 @@
     <a
       href="#overview"
       on:click|preventDefault={() => handleClick("overview")}
-      class="flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap transition-all duration-300 group snap-start relative {activeSection ===
+      class="nav-link flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap transition-all duration-300 group snap-start relative {activeSection ===
       'overview'
         ? 'text-lime-600 bg-lime-100'
         : 'text-gray-600 hover:text-lime-600 hover:bg-lime-200'}"
@@ -117,7 +115,7 @@
     <a
       on:click|preventDefault={() => handleClick("itinerary")}
       href="#itinerary"
-      class="flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap transition-all duration-300 group snap-start relative {activeSection ===
+      class="nav-link flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap transition-all duration-300 group snap-start relative {activeSection ===
       'itinerary'
         ? 'text-blue-600 bg-blue-100'
         : 'text-gray-600 hover:text-blue-600 hover:bg-blue-200'}"
@@ -148,7 +146,7 @@
     <a
       href="#inclusions"
       on:click|preventDefault={() => handleClick("inclusions")}
-      class="flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap transition-all duration-300 group snap-start relative {activeSection ===
+      class="nav-link flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap transition-all duration-300 group snap-start relative {activeSection ===
       'inclusions'
         ? 'text-teal-600 bg-teal-100'
         : 'text-gray-600 hover:text-teal-600 hover:bg-teal-200'}"
@@ -179,7 +177,7 @@
     <a
       href="#exclusions"
       on:click|preventDefault={() => handleClick("exclusions")}
-      class="flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap transition-all duration-300 group snap-start relative {activeSection ===
+      class="nav-link flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap transition-all duration-300 group snap-start relative {activeSection ===
       'exclusions'
         ? 'text-pink-600 bg-pink-100'
         : 'text-gray-600 hover:text-pink-600 hover:bg-pink-200'}"
@@ -210,7 +208,7 @@
     <a
       href="#terms"
       on:click|preventDefault={() => handleClick("terms")}
-      class="flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap transition-all duration-300 group snap-start relative {activeSection ===
+      class="nav-link flex items-center gap-2 px-3 py-2 rounded-lg whitespace-nowrap transition-all duration-300 group snap-start relative {activeSection ===
       'terms'
         ? 'text-orange-600 bg-orange-100'
         : 'text-gray-600 hover:text-orange-600 hover:bg-orange-200'}"
