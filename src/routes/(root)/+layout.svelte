@@ -29,7 +29,7 @@
 </div>
 <a
   href="https://wa.me/233598117590?text=I%20visited%20your%20website%20and%20I%20would%20like%20more%20information%20on%20your%20travel%20services."
-  class="rounded-full bg-blue-500 hover:bg-blue-700 text-neutral-100 w-14 h-14 flex justify-center items-center fixed z-[99999] right-8 bottom-8 transition-all hover:-translate-y-2"
+  class="rounded-full bg-blue-500 hover:bg-blue-700 text-neutral-100 w-14 h-14 flex justify-center items-center fixed z-[99999] right-8 bottom-20 transition-all hover:-translate-y-2"
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"

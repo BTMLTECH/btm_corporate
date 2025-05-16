@@ -156,7 +156,7 @@
 </script>
 
 <div class="bg-gray-100 w-full">
-  <div class="min-h-screen py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+  <div class="min-h-screen py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative {data.user ? "top-[72px]" : ""}">
     <div class="mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
       <div class="bg-blue-600 px-6 py-4">
         <h2 class="text-xl font-bold text-white">Book Your Tour Package</h2>

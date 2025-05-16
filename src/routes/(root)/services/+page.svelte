@@ -3,6 +3,7 @@
 	import CallOut from '../components/CallOut.svelte';
 	import Hero from './components/Hero.svelte';
 	import services from '$lib/data/services'
+  import type { LayoutData } from '../$types';
 
 	const serviceInfo = {
 		title: '',
@@ -26,9 +27,11 @@
 	function resetServiceStatus() {
 		serviceStore.set({ serviceType: '', isOpen: false });
 	}
+
+	export let data: LayoutData
 </script>
 
-<div class="services-container">
+<div class="services-container relative {data.user ? "top-8" : ""}">
 	<Hero />
 
 	<section id="services" class="mb-16">

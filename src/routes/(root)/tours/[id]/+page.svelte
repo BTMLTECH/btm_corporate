@@ -10,9 +10,9 @@
   const { tourPackage } = data;
 </script>
 
-<div class="relative py-8 md:py-16 bg-gray-100">
+<div class="relative py-8 md:py-16 bg-gray-100 {data.user ? 'top-[52px]' : ''}">
   <TourCard
-  id={tourPackage.id}
+    id={tourPackage.id}
     title={tourPackage.title}
     price={tourPackage.price_per_person_usd ??
       tourPackage.price_per_family_usd ??
@@ -23,7 +23,7 @@
     packageType={tourPackage.package_type}
   />
 
-  <Navigation />
+  <Navigation isUserLoggedIn={data.user ? true : false} />
 
   <div
     class="max-w-5xl mx-auto text-white bg-blue-950 rounded-2xl px-7 py-4 mt-8 h-[170px] flex flex-col justify-center"

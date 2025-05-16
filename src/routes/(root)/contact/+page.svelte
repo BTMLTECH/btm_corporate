@@ -1,3 +1,4 @@
+
 <section
   class="relative py-12 lg:py-28 px-0 bg-gray-100 bg-cover bg-center text-center"
   style="background-image: url('https://www.btmghana.net/_app/immutable/assets/jumbo-image.BzyAVUnH.webp');"

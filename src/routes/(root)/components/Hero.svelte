@@ -24,7 +24,7 @@
   });
 </script>
 
-<section id="hero-content" class="relative w-full">
+<section id="hero-content" class="relative w-full {data.user ? "top-6" : ""}">
   <div
     class="relative overflow-hidden w-full h-full aspect-square md:h-[380px]"
   >

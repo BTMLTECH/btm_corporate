@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
 
   let activeSection: string = "overview";
+  export let isUserLoggedIn: boolean = false
 
   function linkClasses(section: string) {
     const colors: Record<string, string> = {
@@ -76,7 +77,7 @@
 </script>
 
 <nav
-  class="max-w-5xl mx-auto mt-8 sticky top-[72px] z-[205] bg-white/90 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-sm"
+  class="max-w-5xl mx-auto mt-8 sticky {isUserLoggedIn ? "top-[112px]" : "top-[72px]"} z-[205] bg-white/90 backdrop-blur-sm border border-gray-200 rounded-2xl shadow-sm"
 >
   <div
     class="flex overflow-x-auto py-4 px-4 space-x-4 scrollbar-hide snap-x snap-mandatory touch-pan-x"
