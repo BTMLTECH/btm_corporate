@@ -431,8 +431,7 @@
                     src={Lola}
                     width="80"
                     height="80"
-                    alt="Ademola Adefarasin
-                                        "
+                    alt="Lola Adefope"
                   />
                   <div>
                     <h3
