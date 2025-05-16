@@ -101,7 +101,7 @@
 
 		<div class="max-w-7xl mx-auto text-center mt-8 mb-12">
 			<button class="btn-primary">
-				<a href="services.html">Discover more</a>
+				<a href="/services">Discover more</a>
 			</button>
 		</div>
 	</div>
