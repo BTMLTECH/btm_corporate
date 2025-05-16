@@ -156,7 +156,7 @@
 </script>
 
 <div class="bg-gray-100 w-full">
-  <div class="min-h-screen py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative {data.user ? "top-[72px]" : ""}">
+  <div class="min-h-screen py-12 md:pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative {data.user ? "top-[58px]" : ""}">
     <div class="mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
       <div class="bg-blue-600 px-6 py-4">
         <h2 class="text-xl font-bold text-white">Book Your Tour Package</h2>
@@ -385,18 +385,20 @@
               class="flex items-center justify-between border-b border-gray-200 pb-4"
             >
               <span class="text-gray-600">Tour Package</span>
-              <span class="font-medium">${(30000.5965).toFixed(2)}</span>
+              <span class="font-medium">$0</span>
+              <!-- <span class="font-medium">${(30000.5965).toFixed(2)}</span> -->
             </div>
             <div
               class="flex items-center justify-between border-b border-gray-200 pb-2"
             >
               <span class="text-gray-600">Service Fee</span>
-              <span class="font-medium">$19.99</span>
+              <span class="font-medium">$0</span>
             </div>
             <div class="mt-4 flex items-center justify-between pt-2">
               <span class="text-lg font-semibold">Total</span>
               <span class="text-lg font-bold text-blue-600">
-                ${(30000.5965 + 19.99).toFixed(2)}
+                <!-- ${(30000.5965 + 19.99).toFixed(2)} -->
+                 $0
               </span>
             </div>
           </div>
