@@ -446,6 +446,28 @@
                   </div>
                 </div>
               </li>
+
+              <li>
+                <div class="flex items-center gap-x-6">
+                  <img
+                    class="h-24 w-24 rounded-full object-cover border-2 border-gray-200"
+                    src={""}
+                    width="80"
+                    height="80"
+                    alt="Nii Anyetei"
+                  />
+                  <div>
+                    <h3
+                      class="text-base font-medium leading-7 tracking-tight text-gray-800"
+                    >
+                      Nii Anyetei
+                    </h3>
+                    <p class="text-sm font-medium leading-6 text-gray-500">
+                      Country Manager
+                    </p>
+                  </div>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
