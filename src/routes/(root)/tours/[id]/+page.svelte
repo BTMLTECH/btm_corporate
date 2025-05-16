@@ -12,6 +12,7 @@
 
 <div class="relative py-8 md:py-16 bg-gray-100">
   <TourCard
+  id={tourPackage.id}
     title={tourPackage.title}
     price={tourPackage.price_per_person_usd ??
       tourPackage.price_per_family_usd ??
@@ -47,6 +48,7 @@
   </div>
 
   <FixedBar
+    id={tourPackage.id}
     title={tourPackage.title}
     price={tourPackage.price_per_person_usd ??
       tourPackage.price_per_family_usd ??

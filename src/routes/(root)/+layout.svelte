@@ -23,7 +23,7 @@
   class="{currentLocation === '/flight/search' ||
   currentLocation === '/flight/book/done'
     ? ''
-    : 'min-h-screen'} relative mt-[98px] -top-11"
+    : 'min-h-screen'} relative mt-[55px]"
 >
   <slot />
 </div>

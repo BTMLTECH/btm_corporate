@@ -14,6 +14,7 @@
     export let title: string
     export let price: number
     export let thumbnail: string
+    export let id: string
   </script>
   
   
@@ -32,9 +33,9 @@
           </div>
         </div>
   
-        <button class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-3">
+        <a href="/tours/{id}/book" class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-3">
           Book Now
-        </button>
+        </a>
       </div>
     </div>
   </div>

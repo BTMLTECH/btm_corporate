@@ -17,12 +17,12 @@
         <li class="{currentRoute === '/services/tourism-consultancy' ? "bg-neutral-300 p-3 rounded-full" : ""} font-semibold hover:translate-x-2 transition-all ease-in">
             <a href="/services/tourism-consultancy">Tourism Consultancy</a>
         </li>
-        <li class="{currentRoute === '/services/hotel-accommodation' ? "bg-neutral-300 p-3 rounded-full" : ""} font-semibold hover:translate-x-2 transition-all ease-in">
-            <a href="/services/hotel-accommodation">Hotel & Accommodation</a>
+        <li class="{currentRoute === '/services/hotel-booking' ? "bg-neutral-300 p-3 rounded-full" : ""} font-semibold hover:translate-x-2 transition-all ease-in">
+            <a href="/services/hotel-booking">Hotel & Accommodation</a>
         </li>
-        <li class="{currentRoute === '/services/industrial-training' ? "bg-neutral-300 p-3 rounded-full" : ""} font-semibold hover:translate-x-2 transition-all ease-in">
+        <!-- <li class="{currentRoute === '/services/industrial-training' ? "bg-neutral-300 p-3 rounded-full" : ""} font-semibold hover:translate-x-2 transition-all ease-in">
             <a href="/services/industrial-training">Industrial Training</a>
-        </li>
+        </li> -->
         <li
             class="{currentRoute === '/services/airport-concierge' ? "bg-neutral-300 p-3 rounded-full" : ""} font-semibold hover:translate-x-2 transition-all ease-in"
         >
@@ -53,8 +53,8 @@
                 >Airport Transfers & Ground Transportation (Globally)</a
             >
         </li>
-        <li class="{currentRoute === '/services/travel-consultation-advice' ? "bg-neutral-300 p-3 rounded-full" : ""} font-semibold hover:translate-x-2 transition-all ease-in">
-            <a href="/services/travel-consultation-advice">Travel Consultation & Advice</a>
+        <li class="{currentRoute === '/services/travel-advisory-services' ? "bg-neutral-300 p-3 rounded-full" : ""} font-semibold hover:translate-x-2 transition-all ease-in">
+            <a href="/services/travel-advisory-services">Travel Advisory Services</a>
         </li>
         <li class="{currentRoute === '/services/group-travel-airline-seat-blocking' ? "bg-neutral-300 p-3 rounded-full" : ""} font-semibold hover:translate-x-2 transition-all ease-in">
             <a href="/services/group-travel-airline-seat-blocking"

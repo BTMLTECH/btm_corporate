@@ -77,7 +77,7 @@
 									class="absolute inset-0 h-full w-full object-cover bg-center rounded-lg"
 								/>
 							</div>
-							<p class="text-gray-700 my-4">
+							<p class="text-gray-700 my-4 max-h-[200px] overflow-y-auto border-b">
 								{serviceInfo.description}
 							</p>
 
