@@ -82,12 +82,12 @@
         <h4 class="text-lg text-white font-medium mb-4">Legal</h4>
         <ul class="text-sm transition-all duration-500">
           <li class="mb-3">
-            <a href="/terms" class="text-gray-300 hover:text-white"
+            <a href="/maintenance" class="text-gray-300 hover:text-white"
               >Terms & Conditions</a
             >
           </li>
           <li class="mb-3">
-            <a href="/privacy" class="text-gray-300 hover:text-white"
+            <a href="/maintenance" class="text-gray-300 hover:text-white"
               >Privacy Policy</a
             >
           </li>
