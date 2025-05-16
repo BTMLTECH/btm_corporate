@@ -450,7 +450,7 @@
                 <div class="flex items-center gap-x-6">
                   <img
                     class="h-24 w-24 rounded-full object-cover border-2 border-gray-200"
-                    src={""}
+                    src={"https://res.cloudinary.com/dafsjzwqf/image/upload/v1747402192/profile-default_plultb.png"}
                     width="80"
                     height="80"
                     alt="Nii Anyetei"
